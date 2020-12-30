@@ -60,7 +60,7 @@ while True:
     if len(height_arr)-count >= 0:
         state[len(height_arr)-count] = 2
 
-    print(state)
+    #print(state)
 
     for i in range(len(height_arr)):
         if state[i] == 0:
