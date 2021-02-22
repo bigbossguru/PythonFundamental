@@ -1,3 +1,0 @@
-python realtime_stock_price.py
-python gui_realtime_price.py
-pause
