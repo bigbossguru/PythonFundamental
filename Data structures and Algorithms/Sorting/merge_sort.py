@@ -1,10 +1,6 @@
+# Data structure and algorithms
+# Merge Sort
 import random
-
-def main():
-	lenght = input("enter lenght of the list >> ")
-	gen_list = [random.randrange(1, 99) for _ in range(int(lenght))]
-	print(f"Before sorting list: {gen_list}")
-	print(f"After sorting list: {mergeSort(gen_list)}")
 
 def mergeSort(list):
 	size = len(list)
@@ -34,6 +30,13 @@ def mergeSort(list):
 			k += 1
 	return list
 
+
+def main():
+	arr = [random.randint(0, 95) for _ in range(random.randint(5, 27))]
+	print('Unsorted list of integers: ', arr)
+	mergeSort(arr)
+	print('Sorted list of integers: ', arr)
+
+
 if __name__ == "__main__":
 	main()
-

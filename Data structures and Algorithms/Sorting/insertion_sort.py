@@ -1,28 +1,26 @@
 # Data structure and algorithms
 # Insertion Sort
+import random
 
-def insertion_sort(arr: list, decrease=False) -> None:
+def insertion_sort(arr: list) -> None:
     n = len(arr)
 
-    for i in range(n-1):
-        key = arr[i+1]
-        for j in range(i,0,-1):
-            if arr[j] > key:
-                
+    for i in range(1, n):
+        key = arr[i]
+        j = i-1
 
-    if decrease:
-        for i in range(n//2):
-            tmp = arr[i]
-            arr[i] = arr[n-1-i]
-            arr[n-1-i] = tmp
+        while j>=0 and key<arr[j]:
+            arr[j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
+
 
 def main():
-    arr = [2,5,1,3,0]
-    print('Before\n'+'-'*30)
-    print(arr)
-    #selection_sort(arr)
-    print('After\n'+'-'*30)
-    print(arr)
+    arr = [random.randint(0,95) for _ in range(random.randint(5, 27))]
+    print('Unsorted list of integers: ', arr)
+    insertion_sort(arr)
+    print('Sorted list of integers: ', arr)
+
 
 if __name__ == "__main__":
     main()

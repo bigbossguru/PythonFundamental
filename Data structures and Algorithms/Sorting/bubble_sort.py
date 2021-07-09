@@ -2,31 +2,21 @@
 # Bubble Sort
 import random
 
-def bubble_sort(arr: list, decrease=False) -> None:
-    n = len(arr)
+def bubble_sort(arr: list) -> None:
+    l = len(arr)
 
-    for i in range(n-1):
-        for j in range(n-1-i):
+    for i in range(l-1):
+        for j in range(l-1-i):
             if arr[j] > arr[j+1]:
-                tmp = arr[j]
-                arr[j] = arr[j+1]
-                arr[j+1] = tmp
-    
-    if decrease:
-        for i in range(n//2):
-            tmp = arr[i]
-            arr[i] = arr[n-1-i]
-            arr[n-1-i] = tmp
-    
-def main():
-    arr = random.sample(range(-1, 10), 5)    
-    print(arr)
-    # bubble_sort(arr)
-    # print(arr)
+                arr[j], arr[j+1] = arr[j+1], arr[j]
 
-    print('Reverse')
-    bubble_sort(arr, True)
-    print(arr)
+
+def main():
+    arr = [random.randint(0,95) for _ in range(random.randint(5, 27))]
+    print('Unsorted list of integers: ', arr)
+    bubble_sort(arr)
+    print('Sorted list of integers: ', arr)
+
 
 if __name__ == "__main__":
     main()

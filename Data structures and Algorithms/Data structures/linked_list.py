@@ -1,6 +1,5 @@
 # Data structure and algorithms
-# Singly Linked List
-# Item navigation is FORWARD ONLY
+# Linked List
 
 class Node(object):
     def __init__(self, data=None, next=None):
@@ -35,7 +34,7 @@ class LinkedList(object):
         if self.size == 0:
             print("Linked List is empty")
         else:
-            print('[', end='')
+            print('Linked List: [', end='')
             current = self.head
             while current.next != None:
                 print(f"{current.data},", end=' ')
@@ -73,9 +72,10 @@ def main():
     my_list.append("Good job")
     my_list.append("Putin")
 
-    print(f"length linkedList = {my_list.get_size()}")
+    print(f"Length linkedList = {my_list.get_size()}")
     my_list.display()
-    print(my_list.find(25))
+    print(my_list.find(3))
+
 
 if __name__ == "__main__":
     main()
