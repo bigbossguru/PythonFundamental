@@ -20,7 +20,7 @@ Python fundamentals knowledge
 - Masking bit field
 
 ## Finance Stock price Scraper
-- yahoo finance web site
+- Scraping Yahoo Finance web site
 
 ## Simple physical simulation
 - Collision two rectangular
