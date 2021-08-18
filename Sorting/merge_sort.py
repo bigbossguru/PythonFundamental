@@ -1,13 +1,14 @@
 # Data structure and algorithms
 # Merge Sort
 import random
+from typing import List
 
-def mergeSort(list):
-	size = len(list)
+def mergeSort(list: list) -> List[int]:
+	size: int = len(list)
 	if size > 1:
-		mid = size // 2
-		left = mergeSort(list[:mid])
-		right = mergeSort(list[mid:])
+		mid: int = size // 2
+		left: list = mergeSort(list[:mid])
+		right: list = mergeSort(list[mid:])
 
 		i = j = k = 0
 		while i < len(left) and j < len(right):
@@ -31,8 +32,8 @@ def mergeSort(list):
 	return list
 
 
-def main():
-	arr = [random.randint(0, 95) for _ in range(random.randint(5, 27))]
+def main() -> None:
+	arr: List[int] = [random.randint(0, 95) for _ in range(random.randint(5, 27))]
 	print('Unsorted list of integers: ', arr)
 	mergeSort(arr)
 	print('Sorted list of integers: ', arr)

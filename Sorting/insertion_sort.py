@@ -1,12 +1,13 @@
 # Data structure and algorithms
 # Insertion Sort
 import random
+from typing import List
 
 def insertion_sort(arr: list) -> None:
-    n = len(arr)
+    n: int = len(arr)
 
     for i in range(1, n):
-        key = arr[i]
+        key: int = arr[i]
         j = i-1
 
         while j>=0 and key<arr[j]:
@@ -15,8 +16,8 @@ def insertion_sort(arr: list) -> None:
         arr[j+1] = key
 
 
-def main():
-    arr = [random.randint(0,95) for _ in range(random.randint(5, 27))]
+def main() -> None:
+    arr: List[int] = [random.randint(0,95) for _ in range(random.randint(5, 27))]
     print('Unsorted list of integers: ', arr)
     insertion_sort(arr)
     print('Sorted list of integers: ', arr)

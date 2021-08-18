@@ -1,36 +1,39 @@
 # Data structure and algorithms
 # Linked List
 
-class Node(object):
-    def __init__(self, data=None, next=None):
+from typing import Any
+
+
+class Node:
+    def __init__(self, data: Any, next: int = None) -> None:
         self.data = data
         self.next = next
 
-class LinkedList(object):
-    def __init__(self):
-        self.head = None
-        self.size = 0
+class LinkedList:
+    def __init__(self) -> None:
+        self.head: Node = None
+        self.size: int = 0
 
-    def append(self, data):
+    def append(self, data: Any) -> None:
         if self.head is None:
             self.head = Node(data=data)
         else:
-            current = self.head
+            current: Node = self.head
             while current.next != None:
                 current = current.next
             current.next = Node(data=data)
         self.size += 1
 
-    def add(self, data):
+    def add(self, data: Any) -> None:
         new_node = Node(data=data)
         new_node.next = self.head
         self.head = new_node
         self.size += 1
 
-    def get_size(self):
+    def get_size(self) -> int:
         return self.size
 
-    def display(self):
+    def display(self) -> None:
         if self.size == 0:
             print("Linked List is empty")
         else:
@@ -41,28 +44,27 @@ class LinkedList(object):
                 current = current.next
             print(f"{current.data}]")
     
-    def find(self, index):
-        count = 0
-        current = self.head
+    def find(self, index) -> None:
+        count: int = 0
+        current: Node = self.head
         while current.next != None:
             if count == index:
                 return current.data
             current = current.next
             count += 1
-        return None
     
-    def insert(self, index, data):
-        count = 0
-        new_node = Node(data=data)
-        current = self.head
+    def insert(self, index: int, data: Any) -> None:
+        count: int = 0
+        new_node: Node = Node(data=data)
+        current: Node = self.head
         while current.next != None:
             if count == index:
                 current.next = new_node
             count += 1
             
 
-def main():
-    my_list = LinkedList()
+def main() -> None:
+    my_list: LinkedList = LinkedList()
     my_list.append(56)
     my_list.append(5)
     my_list.append(3)
