@@ -1,6 +1,9 @@
 from enum import IntEnum
-from typing import List, Tuple
+from typing import List, Tuple, TypeVar
 from random import randint
+from generic_search import linear_search, Comparable
+
+T = TypeVar('T')
 
 Nucleotide: IntEnum = IntEnum('Nucleotide', ('A', 'C', 'G', 'T'))
 Codon = Tuple[Nucleotide, Nucleotide, Nucleotide]
@@ -21,25 +24,6 @@ def string_to_gene(s: str) -> Gene:
         gene.append(codon)
     return gene
 
-def linear_search_contains(gene: Gene, key_codon: Codon) -> bool:
-    for codon in gene:
-        if codon == key_codon:
-            return True
-    return False
-
-def binary_search_contains(gene: Gene, key_codon: Codon) -> bool:
-    low: int = 0
-    high: int = len(gene)-1
-    while low <= high:
-        mid: int = (low + high) // 2
-        if gene[mid] < key_codon:
-            low = mid+1
-        elif gene[mid] > key_codon:
-            high = mid-1
-        else:
-            return True
-    return False
-
 if __name__ == "__main__":
     gene_str: str = "CGGAACATCCTTGAAGCTTCGGTAACCAGGGTAGTTCGAGACATGTCCAC"    # gen_genom_string(n=50)
     my_gene: Gene = string_to_gene(s=gene_str)
@@ -48,12 +32,12 @@ if __name__ == "__main__":
     gac: Codon = (Nucleotide.G, Nucleotide.A, Nucleotide.C)
     tga: Codon = (Nucleotide.T, Nucleotide.G, Nucleotide.A)
 
-    print(linear_search_contains(gene=my_gene, key_codon=gac))  # True
-    print(linear_search_contains(gene=my_gene, key_codon=tga))  # False
+    print(linear_search(my_gene, gac))  # True
+    print(linear_search(my_gene, tga))  # False
 
     my_sorted_gene: Gene = sorted(my_gene)
-    print(binary_search_contains(gene=my_gene, key_codon=gac))  # True
-    print(binary_search_contains(gene=my_gene, key_codon=tga))  # False
+    print(Comparable.binary_search(my_sorted_gene, gac))
+    print(Comparable.binary_search(my_sorted_gene, tga))
 
     print(my_gene)
     print()
