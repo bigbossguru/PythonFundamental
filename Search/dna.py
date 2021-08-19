@@ -21,3 +21,6 @@ if __name__ == "__main__":
 
     print(Comparable.binary_search(my_gene, 'AAA'))
     print(Comparable.binary_search(my_gene, 'TAT'))
+
+    print(linear_search(my_gene, 'AAA'))
+    print(linear_search(my_gene, 'TAT'))
