@@ -5,7 +5,36 @@ T = TypeVar('T')
 
 def merge_sort(container: Iterable[T]) -> Iterable[T]:
     """ Merge Sort Algorithm """
-    pass
+    
+    length: int = len(container)
+    sorted: int = copy(container)
+
+    if length > 1:
+        mid: int = length // 2
+
+        left: Iterable[T] = merge_sort(sorted[:mid])
+        right: Iterable[T] = merge_sort(sorted[mid:])
+
+        i = j = k = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                sorted[k] = left[i]
+                i += 1
+            else:
+                sorted[k] = right[j]
+                j += 1
+            k += 1
+
+        while i < len(left):
+            sorted[k] = left[i]
+            i += 1
+            k += 1
+            
+        while j < len(right):
+            sorted[k] = right[j]
+            j += 1
+            k += 1
+    return sorted
 
 def selection_sort(container: Iterable[T]) -> Iterable[T]:
     """ Selection Sort Algorithm """
