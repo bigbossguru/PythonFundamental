@@ -77,3 +77,37 @@ def bubble_sort(container: Iterable[T]) -> Iterable[T]:
             if sorted[j] > sorted[j+1]:
                 sorted[j], sorted[j+1] = sorted[j+1], sorted[j]
     return sorted
+
+
+def quick_sort(container: Iterable[T]) -> Iterable[T]:
+    """ Quick Sort Algorithm """
+
+    length: int = len(container)
+    sorted: Iterable[T] = copy(container)
+
+    left: int = 0
+    right: int = length - 1
+
+    def _qs(container: Iterable[T], left: int, right: int) -> None:
+        def partition(container: Iterable[T], left: int, right: int) -> int:
+            pivot: int = container[right]
+            i = left - 1
+
+            for j in range(left, right):
+                if container[j] <= pivot:
+                    i += 1
+                    container[i], container[j] = container[j], container[i]
+            container[i+1], container[right] = container[right], container[i+1]
+            return i+1
+        
+        if left < right:
+            part_idx = partition(container, left, right)
+            _qs(container, left, part_idx-1)
+            _qs(container, part_idx+1, right)
+
+    _qs(sorted, left, right)
+
+    return sorted
+
+
+
