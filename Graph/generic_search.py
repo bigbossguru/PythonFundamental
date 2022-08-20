@@ -1,6 +1,3 @@
-from typing import Hashable
-
-
 def breadth_first_search(graph: dict, src: str, dst: str) -> bool:
     """Breadth First Search Algorithm
 
@@ -60,3 +57,19 @@ if __name__ == "__main__":
 
     print(breadth_first_search(graph, "a", "d"))
     print(depth_first_search(graph, "a", "d"))
+
+
+def raise_errors(key: str, *arg, **kwargs) -> bool:
+    """_summary_
+
+    :param str key: _description_
+    :raises ValueError: _description_
+    :return bool: _description_
+    """
+    if arg[0] == key:
+        return True
+    else:
+        if key == "key":
+            return False
+        else:
+            raise ValueError
